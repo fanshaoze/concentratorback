@@ -1,9 +1,5 @@
 package com.hit.heat.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-
 import com.hit.heat.util.Util;
 
 public class Energy {
@@ -41,17 +37,16 @@ public class Energy {
 		this.r_reboot = r_reboot;
 	}
 
-	public Energy(String id, long cPU, long lPM, long send_time,
-			long receive_time, int voltage, int ParentID,int synTime, String beacon,
-			int num_neighbors, int rtmetric, int r_reboot, int reboot,
-			int cycleTime, String cycleTimeDirection,String currenttime) {
+	public Energy(String id, long cPU, long lPM, long send_time, long receive_time, int voltage, int ParentID,
+			int synTime, String beacon, int num_neighbors, int rtmetric, int r_reboot, int reboot, int cycleTime,
+			String cycleTimeDirection, String currenttime) {
 		super();
 		this.id = id;
 		this.CPU = cPU;
 		this.LPM = lPM;
 		this.Send_time = send_time;
 		this.Receive_time = receive_time;
-		this.voltage = (float)(voltage/1000.0);
+		this.voltage = (float) (voltage / 1000.0);
 		this.ParentID = ParentID;
 		this.synTime = synTime;
 		this.beacon = beacon;
@@ -103,11 +98,13 @@ public class Energy {
 	public float getVoltage() {
 		return voltage;
 	}
+
 	public int getParentID() {
 		return ParentID;
 	}
+
 	public void setVoltage(int voltage) {
-		this.voltage = (float)(voltage/1000.0);
+		this.voltage = (float) (voltage / 1000.0);
 	}
 
 	public String getId() {
@@ -166,15 +163,14 @@ public class Energy {
 	public void setCycleTimeDirection(String cycleTimeDirection) {
 		this.cycleTimeDirection = cycleTimeDirection;
 	}
+
 	public String getNodecurrenttime() {
-		String temp =Util.getCurrentTime();
-		System.out.println(temp);
-		String DateCurrenttime = temp.substring(0,11);
-		System.out.println(DateCurrenttime);
-		Nodecurrenttime = DateCurrenttime+Nodecurrenttime;
+		String temp = Util.getCurrentTime();
+//		System.out.println(temp);
+		String DateCurrenttime = temp.substring(0, 11);
+//		System.out.println(DateCurrenttime);
+		Nodecurrenttime = DateCurrenttime + Nodecurrenttime;
 		return Nodecurrenttime;
 	}
-
-
 
 }

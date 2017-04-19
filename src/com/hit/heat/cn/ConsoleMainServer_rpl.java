@@ -144,7 +144,8 @@ public class ConsoleMainServer_rpl {
 		} // 存储客户端下达的指令
 		catch (JSONException e) {
 			parameter = new NetParameter("00000001", 40, 3, 30, "0.0.0.0", 12300, 12301, 12306, "aaaa::1", 8765,
-					"aaaa:0:0:0:12:7400:1:13", 5678, "192.168.1.141", 12303, "192.168.1.141", 12304, 12307);
+					"aaaa:0:0:0:12:7400:1:13", 5678, "192.168.1.141", 12303, "192.168.1.141", 12304, 12307,2,3,
+					"0.0.0.0,",12400,"xiaoming","139.199.154.37","xiaoming",21);
 			synParameter = new SynParameter(0, 0, 0, 0, 0, 0, "0".getBytes(), false, null);
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -811,51 +812,46 @@ public class ConsoleMainServer_rpl {
 //						break;
 					// 有用
 					case "schedule":// 广播配置调度
+						System.out.println("schedule" + ((JSONObject) retObject).getString(("pama_data")));
+
+						JSONObject synJson = new JSONObject(((JSONObject) retObject).getString(("pama_data")));
 						try {
-							System.out.println("schedule" + ((JSONObject) retObject).getString(("pama_data")));
-
-							JSONObject synJson = new JSONObject(((JSONObject) retObject).getString(("pama_data")));
-							try {
-								System.out.println(Util.formatBytesToStr(Base64.decode(synJson.getString("bitmap"))));
-								//byte[] bit = Base64.decode(synJson.getString("bitmap"));
-							} catch (Base64DecodingException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-
-							try {
-								synParameter.setBitmap(Base64.decode(synJson.getString("bitmap")));
-								synParameter.setBit(synJson.getString("bitmap"));
-							} catch (Base64DecodingException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-							synParameter.setFlag(true);
-							Util.writeSynConfigParamToFile(synParameter, "GSynConfig.json");
-							try {
-								// byte[] bit =
-								// Base64.decode(synJson.getString("bitmap"));
-
-								// byte[] schedule=packScheduleConfigData(bit);
-
-								paramConfigProxy.mcastConfig(
-										packScheduleConfigData(Base64.decode(synJson.getString("bitmap"))), ipList,
-										parameter.getRootPort(), NODE_UNICAST_PORT);
-
-								// TunSendToRootMessage(schedule);
-
-							} catch (Base64DecodingException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							// TunSendToRootMessage(((JSONObject)
-							// retObject).getString(("pama_data")).getBytes());
-							synStateFlag = true;
-							synJson = null;
-						} catch (IOException e) {
-							// TODO 自动生成的 catch 块
+							System.out.println(Util.formatBytesToStr(Base64.decode(synJson.getString("bitmap"))));
+							//byte[] bit = Base64.decode(synJson.getString("bitmap"));
+						} catch (Base64DecodingException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+
+						try {
+							synParameter.setBitmap(Base64.decode(synJson.getString("bitmap")));
+							synParameter.setBit(synJson.getString("bitmap"));
+						} catch (Base64DecodingException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						synParameter.setFlag(true);
+						Util.writeSynConfigParamToFile(synParameter, "GSynConfig.json");
+						try {
+							// byte[] bit =
+							// Base64.decode(synJson.getString("bitmap"));
+
+							// byte[] schedule=packScheduleConfigData(bit);
+
+							paramConfigProxy.mcastConfig(
+									packScheduleConfigData(Base64.decode(synJson.getString("bitmap"))), ipList,
+									parameter.getRootPort(), NODE_UNICAST_PORT);
+
+							// TunSendToRootMessage(schedule);
+
+						} catch (Base64DecodingException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// TunSendToRootMessage(((JSONObject)
+						// retObject).getString(("pama_data")).getBytes());
+						synStateFlag = true;
+						synJson = null;
 						break;
 					// 有用
 					case "pama_corr":

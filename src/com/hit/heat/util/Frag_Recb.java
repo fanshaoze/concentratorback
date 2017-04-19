@@ -1,5 +1,6 @@
 package com.hit.heat.util;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class Frag_Recb {
 			fragList.add(i, "");
 		}
 		this.setSeqnum(b[FRAG_SEQ_INDEX]);
-		timer.schedule(new timerTask(addr), 60*3* 1000);
+		timer.schedule(new timerTask(addr), 3* 1000);// 60*3* 1000
 	}
 
 	private void insertFrag(String frag, int index) {
@@ -61,14 +62,13 @@ public class Frag_Recb {
 
 		rdc_EF_Control.updateAppData(this.addr);
 
-		/**********************************************************/
 		Main.coServer.sent_message(this.addr,
 				Util.formatByteStrToByte(sb.toString()));
 	}
 
 	private void finishRecb() {
 		if (!this.frag_End) {
-			System.out.println("not end ");
+			// System.out.println("not end ");
 
 			return ;
 		}
@@ -91,7 +91,7 @@ public class Frag_Recb {
 		this.setFragType(b[FRAGTYPE_INDEX]);
 
 
-		
+
 		if (!this.getIf_frag(this.frag_type)) {
 			byte[] bt = new byte[b.length - 3];
 			System.err.println("not frag");
@@ -100,12 +100,12 @@ public class Frag_Recb {
 			return bt;
 
 		}
-		
+
 		byte[] bt = new byte[b.length - DATA_INDEX];
 		for (int i = DATA_INDEX; i < b.length; i++) {
 			bt[i - DATA_INDEX] = b[i];
 		}
-		
+
 		if (this.seqnum != b[FRAG_SEQ_INDEX]) {
 			this.setSeqnum(b[FRAG_SEQ_INDEX]);
 			for (int i = 0; i < FRAG_TOTAL_NUM; i++) {
@@ -182,10 +182,10 @@ public class Frag_Recb {
 			// TODO Auto-generated method stub
 			if (fragHashMap.containsKey(addr)){
 				fragHashMap.get(addr).orpl_seq_maHashMap.clear();
-				
+
 				fragHashMap.remove(addr);
 			}
-				
+
 			timer.cancel();
 		}
 

@@ -31,12 +31,24 @@ public class NetParameter {
 	private String remoteAddr;
 	private int remotePort;
 	private int netPort;
+	private int dayLength;
+	private int appSendLength;
+	private String upperAddr;
+	private int upperPort;
+	private String ftpuser;
+	private String ftphost;   
+	private String ftpPwd;
+	private int ftpPort;
 	public NetParameter(){
 	}
 	/**
 	 * 
 	 */
-	public NetParameter(String id,int HeartIntSec,int AckHeartInt,int MaxAckFail,String tcpAddr,int tcpPort,int tcpByWebPort, int tcpRemoteConfigPort,String udpAddr,int udpPort,String rootAddr,int rootPort,String tcpWebServerAddr,int tcpWebServerPort,String remoteAddr,int remotePort,int netPort) {
+	public NetParameter(String id,int HeartIntSec,int AckHeartInt,int MaxAckFail,String tcpAddr,
+			int tcpPort,int tcpByWebPort, int tcpRemoteConfigPort,String udpAddr,int udpPort,
+			String rootAddr,int rootPort,String tcpWebServerAddr,int tcpWebServerPort,
+			String remoteAddr,int remotePort,int netPort,int dayLength,int appSendLength,String upperAddr,int upperPort,
+			String ftpuser,String ftphost,String ftpPwd,int ftpPort) {
 		// TODO 自动生成的构造函数存根
 		this.id = id;
 		this.HeartIntSec = HeartIntSec;
@@ -56,6 +68,14 @@ public class NetParameter {
 		this.tcpByWebPort= tcpByWebPort;
 		this.tcpRemoteConfigPort =tcpRemoteConfigPort;
 		this.netPort =netPort;
+		this.dayLength = dayLength;
+		this.appSendLength = appSendLength;
+		this.upperAddr = upperAddr;
+		this.upperPort = upperPort;
+		this.ftpuser = ftpuser;
+		this.ftphost = ftphost;   
+		this.ftpPwd = ftpPwd;
+		this.ftpPort = ftpPort;
 	}
 	
 	public String getId() {
@@ -257,6 +277,52 @@ public class NetParameter {
 	public void setRemotePort(int remotePort) {
 		this.remotePort = remotePort;
 	}
-	
-	
+	public int getdayLength() {
+		return dayLength;
+	}
+	public void setdayLength(int dayLength) {
+		this.dayLength = dayLength;
+	}
+	public int getappSendLength() {
+		return appSendLength;
+	}
+	public void setappSendLength(int appSendLength) {
+		this.appSendLength = appSendLength;
+	}
+	public String getupperAddr() {
+		return upperAddr;
+	}
+	public void setUpperAddr(String upperAddr) {
+		this.upperAddr = upperAddr;
+	}
+	public int getupperPort() {
+		return upperPort;
+	}
+	public void setUpperPort(int upperPort) {
+		this.upperPort = upperPort;
+	}
+	public String getftpuser() {
+		return ftpuser;
+	}
+	public void setftpuser(String ftpuser) {
+		this.ftpuser = ftpuser;
+	}
+	public String getftphost() {
+		return ftphost;
+	}
+	public void setftphost(String ftphost) {
+		this.ftphost = ftphost;
+	}
+	public String getftpPwd() {
+		return ftpPwd;
+	}
+	public void setftpPwd(String ftpPwd) {
+		this.ftpPwd = ftpPwd;
+	}
+	public int getftpPort() {
+		return ftpPort;
+	}
+	public void setftpPort(int ftpPort) {
+		this.ftpPort = ftpPort;
+	}
 }

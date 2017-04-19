@@ -142,6 +142,7 @@ public class SynParameter {
 	 *            要设置的 bitmap
 	 */
 	public void setBitmap(byte[] bitmap) {
+		System.out.println("right");
 		this.bitmap = bitmap;
 	}
 	
