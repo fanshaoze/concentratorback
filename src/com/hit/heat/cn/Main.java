@@ -12,7 +12,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		//SqlOperate.connect("jdbc:sqlite:/root/build_jar/topo3.db");
 		//SqlOperate.connect("jdbc:sqlite:/home/fan/topo3.db");
-		SqlOperate.connect("jdbc:sqlite:topo4.db");
+		//SqlOperate.connect("jdbc:sqlite:topo3.db");
 		System.out.println(Util.getCurrentTime()+" ======启动集中器后台======");
 //		SqlOperate.connect("jdbc:sqlite:/home/gxn/Desktop/topo3.db");
 		coServer = new ConsoleMainServer();

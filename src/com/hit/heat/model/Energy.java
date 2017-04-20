@@ -9,7 +9,7 @@ public class Energy {
 	private long LPM;// lpm
 	private long Send_time;// 发送时间
 	private long Receive_time;// 接收时间
-	private int ParentID;
+	private String ParentID;
 	private float voltage;
 	private int synTime;// 同步时差
 	private String beacon;// beacon
@@ -37,7 +37,7 @@ public class Energy {
 		this.r_reboot = r_reboot;
 	}
 
-	public Energy(String id, long cPU, long lPM, long send_time, long receive_time, int voltage, int ParentID,
+	public Energy(String id, long cPU, long lPM, long send_time, long receive_time, int voltage, String ParentID,
 			int synTime, String beacon, int num_neighbors, int rtmetric, int r_reboot, int reboot, int cycleTime,
 			String cycleTimeDirection, String currenttime) {
 		super();
@@ -99,7 +99,7 @@ public class Energy {
 		return voltage;
 	}
 
-	public int getParentID() {
+	public String getParentID() {
 		return ParentID;
 	}
 

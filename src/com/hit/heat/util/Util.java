@@ -1089,9 +1089,13 @@ public class Util {
 		// 重启次数 1字節
 		int ReBoot = message[GlobalDefines.GlobalCollectView.G_DEF_ENERGY_REBOOT];
 		String NodeID = selfId.split(":")[selfId.split(":").length - 1];
-
+		int i = 0;
+		int lengthing = NodeID.length();
+		for(i = 0;i<4-lengthing;i++){
+			NodeID = "0" + NodeID;
+		}
 		Energy ene = new Energy(NodeID, getLong(CPU_time), getLong(LPM_time), getLong(Send_time), getLong(Receive_time),
-				Util.getInt(Voltage), Util.getInt(ParentID), SynTime, "" + Util.getInt(Beacon),
+				Util.getInt(Voltage), Util.formatByteToByteStr(ParentID), SynTime, "" + Util.getInt(Beacon),
 				Util.getInt(Num_neighbors), Util.getInt(Rtmetric), ReBoot, 0, getInt(cycleTime),
 				"" + cycleTimeDirection, "" + currenttime);
 

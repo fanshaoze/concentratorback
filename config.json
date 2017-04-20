@@ -9,7 +9,7 @@
 	"tcpRemoteConfigPort":12306,
 	"udpAddr":"0.0.0.0",
 	"udpPort":8765,
-	"rootAddr":"aaaa:0:0:0:12:7400:2:18",
+	"rootAddr":"aaaa:0:0:0:12:7400:1:218",
 	"rootPort":5678,
 	"rootRoomId":"512",
 	"rootX":12,

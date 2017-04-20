@@ -548,7 +548,7 @@ public class ConsoleMainServer {
 			}
 			nioUpperServer.registerHandler(new UpperUdpMessageHandler());
 			nioUpperServer.start();
-			//System.out.println("upper server start");// for log
+			//System.out.println("upper server start");// for log //115200
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -1323,7 +1323,10 @@ public class ConsoleMainServer {
 		System.out.println("send topo Before day_length " + day_length);// for
 																		// log
 		try {
-			String TopouploadFile = new SimpleDateFormat("yyyy-MM-dd#HH:mm:ss").format(new Date()) + "-topo.txt";
+			
+			String TopouploadFile =  new SimpleDateFormat("yyyy-MM-dd#HH:mm:ss").format(new Date()) + "-topo.txt";
+			TopouploadFile = parameter.getId() + TopouploadFile;
+			//System.out.println("parameter.getId()"+parameter.getId());
 			SqlOperate.topo_out(day_length, TopouploadFile);
 			WriteFTPFile write = new WriteFTPFile();
 			write.upload(parameter.getftpuser(), parameter.getftpPwd(), parameter.getftphost(), parameter.getftpPort(),
@@ -1338,23 +1341,22 @@ public class ConsoleMainServer {
 	// 发送历史应用数据5 //测试通过
 	public byte[] sendApplicationData(byte[] command) {
 
-		int day_length = (command[1] << 8 | command[2]);
-		System.out.println(Util.getCurrentTime()+" Send appdata to Remote server("+ day_length+"):" + Util.formatByteToByteStr(command));// for log
-
-
-		try {
-			String AppuploadFile = new SimpleDateFormat("yyyy-MM-dd#HH:mm:ss").format(new Date()) + "-App.txt";
-			SqlOperate.ApplicationData_out(day_length, AppuploadFile);
-			WriteFTPFile write = new WriteFTPFile();
-			write.upload(parameter.getftpuser(), parameter.getftpPwd(), parameter.getftphost(), parameter.getftpPort(),
-					AppuploadFile);
-			//System.out.println(Util.getCurrentTime()+" ftpuser:" + parameter.getftpuser() + ",ftpPwd:" + parameter.getftpPwd() + ",ftphost:"
-					//+ parameter.getftphost() + ",ftpPort:" + parameter.getftpPort());// for
-																						// log
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		int day_length = (command[1] << 8 | command[2]);
+//		System.out.println(Util.getCurrentTime()+" Send appdata to Remote server("+ day_length+"):" + Util.formatByteToByteStr(command));// for log
+//		try {
+//			String AppuploadFile = new SimpleDateFormat("yyyy-MM-dd#HH:mm:ss").format(new Date()) + "-App.txt";
+//			 AppuploadFile = parameter.getId()+"-" + AppuploadFile;
+//			SqlOperate.ApplicationData_out(day_length, AppuploadFile);
+//			WriteFTPFile write = new WriteFTPFile();
+//			write.upload(parameter.getftpuser(), parameter.getftpPwd(), parameter.getftphost(), parameter.getftpPort(),
+//					AppuploadFile);
+//			//System.out.println(Util.getCurrentTime()+" ftpuser:" + parameter.getftpuser() + ",ftpPwd:" + parameter.getftpPwd() + ",ftphost:"
+//					//+ parameter.getftphost() + ",ftpPort:" + parameter.getftpPort());// for
+//																						// log
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 
@@ -1526,7 +1528,7 @@ public class ConsoleMainServer {
 	public static void main(String[] args) throws IOException {
 		// ConsoleMainServer main =
 		// SqlOperate.connect("jdbc:sqlite:/root/build_jar/topo3.db");
-		SqlOperate.connect("jdbc:sqlite:topo4.db");
+		SqlOperate.connect("jdbc:sqlite:topo3.db");
 		System.out.println("123");
 		// "2017-03-26 19:58:49"
 		// sendProcessLog();

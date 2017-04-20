@@ -138,7 +138,7 @@ public class rdc_EF_Control {
 		rdc_EF_Control.current_guard = current_guard;
 	}
 
-	private static float calCurrent(Energy en) {
+	public static float calCurrent(Energy en) {
 
 		float avg_cur = (en.getCPU() * cpu_ac + en.getLPM() * lpm_ac
 				+ en.getReceive_time() * receice_ac + en.getSend_time()
